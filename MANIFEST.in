@@ -1,0 +1,4 @@
+include README.md
+recursive-include octoprint_M150Control/templates *
+recursive-include octoprint_M150Control/translations *
+recursive-include octoprint_M150Control/static *

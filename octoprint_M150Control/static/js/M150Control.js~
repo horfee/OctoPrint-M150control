@@ -1,0 +1,65 @@
+/*
+ * View model for OctoPrint-M150control
+ *
+ * Author: Jean-Philippe Alexandre
+ * License: AGPLv3
+ */
+$(function() {
+    function M150controlViewModel(parameters) {
+        var self = this;
+
+
+        // assign the injected parameters, e.g.:
+         self.loginState = parameters[0];
+         self.settings   = parameters[1];
+	 self.controls   = parameters[2];
+
+	self.autoCommit = ko.observable();
+	self.inCustomControl = ko.observable();
+
+	var containerId = "#control-jog-general";
+	$(containerId).after(
+                "<div id=\"m150-control\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">" +
+                        "<h1>" + gettext('ledTitle') + "</h1>" +
+                        "<div id=\"m150_control_picker\"></div>" +
+                        "<input id=\"m150_control_autocommit\" type=\"checkbox\" data-bind=\"checked: controls.autoCommit\">" +
+                        "<label for=\"m150_control_autocommit\">" + gettext('ledAutoSend') + "</label>" +
+                        "<input type=\"button\" label=\"" + gettext('ledSend') + "\" data-bind=\"visible: not(controls.autoCommit)\">" +
+                "</div>");
+        var colorPicker = new iro.ColorPicker('#m150_control_picker');
+
+        colorPicker.on([ 'color:change'], function(color) {
+
+                if ( self.controls.autoCommit() ) {
+                        self.changeColor(color);
+                }
+        });
+
+	self.changeColor = function() {
+                var red, green, blue, white, brightness;
+                OctoPrint.control.sendGcode("M150 R" + red + " U" + green + " B" + blue + " W" + white + " P" + brightness);
+        };
+
+        self.not = function(val) {
+                return !val;
+        }
+
+
+	self.onBeforeBinding = function() {
+		self.controls.autoCommit(self.settings.settings.plugins.M150Control.autoCommit());
+		self.controls.inCustomControl(self.settings.settings.plugins.M150Control.inCustomControl());
+	}
+    }
+
+    /* view model class, parameters for constructor, container to bind to
+     * Please see http://docs.octoprint.org/en/master/plugins/viewmodels.html#registering-custom-viewmodels for more details
+     * and a full list of the available options.
+     */
+    OCTOPRINT_VIEWMODELS.push({
+        construct: M150controlViewModel,
+        // ViewModels your plugin depends on, e.g. loginStateViewModel, settingsViewModel, ...
+        dependencies: [ "loginStateViewModel", "settingsViewModel", "controlViewModel" ],
+        // Elements to bind to, e.g. #settings_plugin_M150Control, #tab_plugin_M150Control, ...
+        elements: [ ]
+    });
+});
