@@ -1,6 +1,7 @@
 # OctoPrint-M150control
 
-**TODO:** Describe what your plugin does.
+This plugin adds a new control in the control tab, allowing users to send M150 commands to the printer.
+Quite simple.
 
 ## Setup
 
@@ -9,9 +10,10 @@ or manually using this URL:
 
     https://github.com/horfee/OctoPrint-M150control/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
 ## Configuration
 
-**TODO:** Describe your plugin's configuration options (if any).
+You can choose to install the new control in the regular control section, or in the custom controls.
+This parameter is useful if you do not use themeify to get a wide display.
+
+Also you can choose to send automatically the M150 command as soon as the color changes (be careful : if this option is enabled, the user will be able to drag the mouse while clicking, overloading the printer with M150 commandes !)
+
