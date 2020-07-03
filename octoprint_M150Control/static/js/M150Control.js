@@ -32,7 +32,7 @@ $(function() {
                         "<div id=\"m150_control_picker\"></div>" +
                         "<input id=\"m150_control_autocommit\" type=\"checkbox\" data-bind=\"checked: settings.settings.plugins.M150Control.autoCommit\">" +
                         "<label for=\"m150_control_autocommit\">" + gettext('ledAutoSend') + "</label>" +
-                        "<input type=\"button\" label=\"" + gettext('ledSend') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
+                        "<input type=\"button\" value=\"" + gettext('ledSend') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
                 "</div>");
         var colorPicker = new iro.ColorPicker('#m150_control_picker', {layoutDirection:"horizontal", width: 120});
 	
