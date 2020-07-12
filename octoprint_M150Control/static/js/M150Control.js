@@ -28,11 +28,11 @@ $(function() {
 	var containerId = "#control-jog-general";
 	$(containerId).after(
                 "<div id=\"m150-control\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">" +
-                        "<h1>" + gettext('ledTitle') + "</h1>" +
+                        "<h1>" + gettext('LED') + "</h1>" +
                         "<div id=\"m150_control_picker\"></div>" +
                         "<input id=\"m150_control_autocommit\" type=\"checkbox\" data-bind=\"checked: settings.settings.plugins.M150Control.autoCommit\">" +
-                        "<label for=\"m150_control_autocommit\">" + gettext('ledAutoSend') + "</label>" +
-                        "<input type=\"button\" value=\"" + gettext('ledSend') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
+                        "<label for=\"m150_control_autocommit\">" + gettext('Send auto.') + "</label>" +
+                        "<input type=\"button\" value=\"" + gettext('Send') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
                 "</div>");
         var colorPicker = new iro.ColorPicker('#m150_control_picker', {layoutDirection:"horizontal", width: 120});
 	
