@@ -34,7 +34,7 @@ $(function() {
                 "<div id=\"m150-control\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">" +
                         "<h1>" + gettext('LED') + "</h1>" +
                         "<div data-bind=\"foreach: settings.settings.plugins.M150Control.presets\" class=\"m150controlpalette\">" +
-			"	<div class=\"m150ControlButton\" data-bind=\"style: {background: color}, click: $parent.changePresetColor\"/>" +
+			"	<div class=\"m150ControlButton\" data-bind=\"visible: active, style: {background: color}, click: $parent.changePresetColor\"/>" +
 			"</div>" +
                         "<div id=\"m150_control_picker\"></div>" +
 			"<div id=\"m150_control_picker_white\" data-bind=\"visible: settings.settings.plugins.M150Control.enableRGBW\"></div>" +
