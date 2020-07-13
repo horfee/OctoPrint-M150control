@@ -39,13 +39,15 @@ $(function() {
             "<div id=\"m150-control\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">" +
             "   <h1>" + gettext('LED') + "</h1>" +
             "   <div data-bind=\"foreach: settings.settings.plugins.M150Control.presets\" class=\"m150controlpalette\">" +
-            "       <div class=\"m150ControlButton\" data-bind=\"visible: active, style: {background: color}, click: $parent.changePresetColor\"/>" +
+            "       <button class=\"m150ControlButton\" data-bind=\"visible: active, style: {background: color}, click: $parent.changePresetColor\">" +
             "   </div>" +
             "   <div id=\"m150_control_picker\"></div>" +
             "   <div id=\"m150_control_picker_white\" data-bind=\"visible: settings.settings.plugins.M150Control.enableRGBW\"></div>" +
-            "   <input id=\"m150_control_autocommit\" type=\"checkbox\" data-bind=\"checked: settings.settings.plugins.M150Control.autoCommit\">" +
-            "   <label for=\"m150_control_autocommit\">" + gettext('Send auto.') + "</label>" +
-            "   <input type=\"button\" value=\"" + gettext('Send') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
+            "   <div style=\"display:flex; align-items: center; height: 32px; justify-content: center;\">" +
+            "       <input id=\"m150_control_autocommit\" type=\"checkbox\" style=\"margin: 2px;\" data-bind=\"checked: settings.settings.plugins.M150Control.autoCommit\">" +
+            "       <label for=\"m150_control_autocommit\" style=\"margin: 2px\">" + gettext('Send auto.') + "</label>" +
+            "       <input type=\"button\" style=\"margin: 2px;\" value=\"" + gettext('Send') + "\" data-bind=\"click: changeColor, visible: not(settings.settings.plugins.M150Control.autoCommit)\">" +
+            "   </div>" +
             "</div>"
         );
 
