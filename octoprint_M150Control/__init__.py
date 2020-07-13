@@ -8,32 +8,32 @@ class M150controlPlugin(octoprint.plugin.SettingsPlugin,
                         octoprint.plugin.TemplatePlugin):
 
 	##~~ SettingsPlugin mixin
-
 	def get_settings_defaults(self):
-		self._logger.info("M150control getting settings defaults")
 		return dict(
 			autoCommit=True,
-			inCustomControl=True
+			enableRGBW=True,
+			inCustomControl=True,
+			presets=[]
 		)
 
 	##~~ AssetPlugin mixin
-
 	def get_assets(self):
 		# Define your plugin's asset files to automatically include in the
 		# core UI here.
 		return dict(
-			js=["js/M150Control.js", "js/iro.min.js"],
-			css=["css/M150Control.css"],
-			less=["less/M150Control.less"]
+			js=[
+				"js/M150Control.js", 
+				"js/M150Control_settings.js", 
+				"js/iro.min.js"
+			],
+			css=["css/M150Control.css"]
 		)
 
 	##~~ TemplatePlugin mixin
-
 	def get_template_configs(self):
-		return [dict(type="settings", custom_bindings=False)]
+		return [dict(type="settings", custom_bindings=True)]
 
 	##~~ Softwareupdate hook
-
 	def get_update_information(self):
 		return dict(
 			M150Control=dict(
@@ -52,7 +52,7 @@ class M150controlPlugin(octoprint.plugin.SettingsPlugin,
 		)
 
 
-__plugin_name__ = "M150control Plugin"
+__plugin_name__ = "M150 Control"
 
 __plugin_pythoncompat__ = ">=2.7,<4" # python 2 and 3
 
