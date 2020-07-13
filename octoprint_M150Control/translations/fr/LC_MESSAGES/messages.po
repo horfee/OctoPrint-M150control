@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OctoPrint-M150control 0.1.0\n"
 "Report-Msgid-Bugs-To: i18n@octoprint.org\n"
-"POT-Creation-Date: 2020-07-12 14:12+0000\n"
+"POT-Creation-Date: 2020-07-13 14:19+0000\n"
 "PO-Revision-Date: 2020-07-12 14:12+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.8.0\n"
 
-#: octoprint_M150Control/static/js/M150Control.js:31
+#: octoprint_M150Control/static/js/M150Control.js:35
 msgid "LED"
 msgstr "LED"
 
-#: octoprint_M150Control/static/js/M150Control.js:34
+#: octoprint_M150Control/static/js/M150Control.js:42
 msgid "Send auto."
 msgstr "Valider auto."
 
-#: octoprint_M150Control/static/js/M150Control.js:35
+#: octoprint_M150Control/static/js/M150Control.js:43
 msgid "Send"
 msgstr "Valider"
 
@@ -38,4 +38,12 @@ msgstr "Insérer le contrôle dans la partie 'contrôles personnalisés'"
 #: octoprint_M150Control/templates/M150Control_settings.jinja2:9
 msgid "Send automatically when user change color"
 msgstr "Valider automatiquement dés que l'utilisateur change la couleur"
+
+#: octoprint_M150Control/templates/M150Control_settings.jinja2:15
+msgid "Enable RGB WHITE led"
+msgstr "Activer le support du canal blanc (RGBW)"
+
+#: octoprint_M150Control/templates/M150Control_settings.jinja2:35
+msgid "Add Color"
+msgstr "Nouvelle couleur"
 
