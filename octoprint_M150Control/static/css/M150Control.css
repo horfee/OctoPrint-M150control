@@ -1,1 +1,24 @@
 /* TODO: Have your plugin's CSS files generated to here. */
+
+.m150Control-row input[type="color"] {
+	width: 50px;
+}
+
+.m150controlpalette {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 10px;
+}
+
+.m150ControlButton {
+	width: 24px;
+	height: 24px;
+	border: 1px solid lightgray;
+	border-radius: 5px;
+}
+
+.m150ControlButton:hover {
+    transform: scale(1.2);
+    transition: 0.2s transform;
+}

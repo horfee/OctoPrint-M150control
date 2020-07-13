@@ -68,12 +68,12 @@ $(function() {
 
 	self.controls.changeColor = function(e) {
                 var {r, g, b} = e.m150control_colorPicker.color.rgb;
-		var w = (e.m150control_whiteColorPicker.color.hsl.l * 255) / 100;
+		var {h, s, l} = e.m150control_whiteColorPicker.color.hsl;
                 //var white = 0;
 		//var brightness = e.m150control_colorPicker.color.hsl.l;
 
 
-                OctoPrint.control.sendGcode("M150 R" + r + " U" + g + " B" + b + " W" + w + " P255");
+                OctoPrint.control.sendGcode("M150 R" + r + " U" + g + " B" + b + " P255");
 		// + " W" + white + " P" + brightness);
 
         };
