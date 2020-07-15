@@ -18,18 +18,44 @@
         </div>
     </div>
 
-    <div data-bind="foreach: settings.settings.plugins.M150Control.presets">
-        <div class="control-group m150Control-row">
-         <label class="control-label">#<span data-bind="text:$index"></span> :</label>
-         <div class="controls">
-             <input type="color" data-bind="value: color">
-             <input type="checkbox" class="input-block-level" data-bind="checked: active"/>
-             <a href='#' data-bind='click: $parent.movePresetUp' class="fa fa-chevron-up"></a>
-             <a href='#' data-bind='click: $parent.movePresetDown' class="fa fa-chevron-down"></a>
-             <a href='#' data-bind='click: $parent.removePreset' class="fa fa-trash-o"></a>
-         </div>
-      </div>
-   </div>
+    <table style="width: 100%">     
+        <thead>
+            <tr>
+                <th style="width:30px"></th>
+                <th>Name</th>
+                <th>Color</th>
+                <th style="width:70px">Active</th>
+                <th>Brightness</th>
+                <th>White Brightness</th>
+                <th style="width:50px"></th>
+            </tr>
+        </thead>
+        <tbody class="m150control-settings" data-bind="foreach: settings.settings.plugins.M150Control.presets">
+            <tr>
+             <th>#<span data-bind="text:$index"></span></th>
+             <td>
+                <input class="m15control-colorname" type="text" data-bind="value: name">
+            </td>
+             <td align="center">
+                 <input class="m15control-colorinput" type="color" data-bind="value: color">
+            </td>
+            <td align="center">
+                <input type="checkbox" class="input-block-level" data-bind="checked: active"/>
+            </td>
+            <td>
+                <input class="m150control-slidersettings" type="number" data-bind="slider: {min: 0, max: 100, step: 1, value: brightness, tooltip: 'hide'}">
+            </td>
+            <td>
+                <input type="number" data-bind="slider: {min: 0, max: 100, step: 1, value: whiteBrightness, tooltip: 'hide'}">
+            </td>
+            <td>
+                 <a href='#' data-bind='click: $parent.movePresetUp' class="fa fa-chevron-up"></a>
+                 <a href='#' data-bind='click: $parent.movePresetDown' class="fa fa-chevron-down"></a>
+                 <a href='#' data-bind='click: $parent.removePreset' class="fa fa-trash-o"></a>
+             </td>
+          </tr>
+       </tbody>
+   </table>
    <div class="control-group">
       <div class="controls">
          <button data-bind='click: addPreset' type="button"><i class="fa fa-plus-circle"></i> {{ _('Add Color') }}</button>

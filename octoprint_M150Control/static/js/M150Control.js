@@ -24,6 +24,20 @@ $(function() {
       } : null;
     }
 
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
 
     function M150controlViewModel(parameters) {
         var self = this;
@@ -42,11 +56,13 @@ $(function() {
         // triggered when user press a preset color
     	self.controls.changePresetColor = function(bindings, event) {
     		self.controls.m150control_colorPicker.color.hexString = bindings.color();
+            self.controls.brightness(bindings.brightness());
+            self.controls.whiteBrightness(bindings.whiteBrightness());
     	};
 
         
         // send command to change the color through M150 gcode
-        self.controls.changeColor = function(e) {
+        self.controls.changeColor = debounce(function(e) {
             var {b,g,r} = self.controls.color();
             var w = self.controls.whiteBrightness();
             var brightness = self.controls.brightness();
@@ -62,7 +78,7 @@ $(function() {
             self.settings.settings.plugins.M150Control.lastColorSent(rgbToHex(self.controls.color()));
             self.settings.settings.plugins.M150Control.lastWhiteColorSent(self.controls.whiteBrightness());
             self.settings.saveData();
-        };
+        },500);
         
 
 
@@ -71,7 +87,7 @@ $(function() {
             "<div id=\"m150-control\" class=\"jog-panel\" data-bind=\"visible: loginState.hasPermissionKo(access.permissions.CONTROL)\">" +
             "   <h1>" + gettext('LED') + "</h1>" +
             "   <div data-bind=\"foreach: settings.settings.plugins.M150Control.presets\" class=\"m150controlpalette\">" +
-            "       <button class=\"m150ControlButton\" data-bind=\"visible: active, style: {background: color}, click: $parent.changePresetColor\">" +
+            "       <button class=\"m150ControlButton\" data-bind=\"visible: active, style: {background: color}, click: $parent.changePresetColor, attr:{title:name}\">" +
             "   </div>" +
             "   <div style=\"display: flex; flex-direction: column; align-items: center;\">" +
             "       <div style=\"display: flex; height: 120px; justify-content: center;\">" +

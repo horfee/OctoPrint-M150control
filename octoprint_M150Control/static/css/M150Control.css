@@ -1,7 +1,11 @@
 /* TODO: Have your plugin's CSS files generated to here. */
 
-.m150Control-row input[type="color"] {
+.m15control-colorinput {
 	width: 50px;
+}
+
+.m15control-colorname {
+	width: 120px;
 }
 
 .m150controlpalette {
@@ -30,4 +34,9 @@
 
 #m150-control .slider-horizontal {
 	width: 130px !important;
+}
+
+.m150control-settings .slider.slider-horizontal {
+	width: 90px !important;
+	margin: 0px 9px 0px 9px;
 }

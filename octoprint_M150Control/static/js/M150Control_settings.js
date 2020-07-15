@@ -11,9 +11,11 @@ $(function () {
         self.settings = parameters[0];
         self.addPreset = function () {
             self.settings.settings.plugins.M150Control.presets.push({
-                name: 'Color-' + (self.settings.settings.plugins.M150Control.presets.length + 1),
-                color: "#FFFFFF",
-                active: true
+                name: ko.observable('Color-' + (self.settings.settings.plugins.M150Control.presets.length + 1)),
+                color: ko.observable("#FFFFFF"),
+                brightness: ko.observable(100),
+                whiteBrightness: ko.observable(0),
+                active: ko.observable(true)
             });
         }
         self.removePreset = function (preset) {
