@@ -14,8 +14,9 @@ class M150controlPlugin(octoprint.plugin.SettingsPlugin,
 			enableRGBW=True,
 			inCustomControl=True,
 			presets=[],
+			lastBrightnessSent=100,
 			lastColorSent="",
-			lastWhiteColorSent=""
+			lastWhiteColorSent=0
 		)
 
 	##~~ AssetPlugin mixin

@@ -23,3 +23,11 @@
     transform: scale(1.2);
     transition: 0.2s transform;
 }
+
+#m150-control .slider-vertical {
+	height: calc(100% - 10px);
+}
+
+#m150-control .slider-horizontal {
+	width: 130px !important;
+}
