@@ -19,6 +19,20 @@ class M150controlPlugin(octoprint.plugin.SettingsPlugin,
 			lastWhiteColorSent=0
 		)
 
+	def on_settings_initialized(self):
+		presets = self._settings.get(["presets"])
+		self._logger.info("Settings before : %s", presets)
+		for preset in presets:
+			if "brightness" not in preset:
+				self._logger.info("Brightness not found")
+				preset["brightness"] = 100
+			if "whiteBrightness" not in preset:
+				self._logger.info("white brightness not found")
+				preset["whiteBrightness"] = 0
+
+		self._logger.info("Settings after : %s", presets)
+		self._settings.set(["presets"], presets)
+
 	##~~ AssetPlugin mixin
 	def get_assets(self):
 		# Define your plugin's asset files to automatically include in the
